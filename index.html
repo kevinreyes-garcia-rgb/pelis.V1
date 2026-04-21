@@ -2,133 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klee Movies | Streaming</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Persecución Infinita</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- HEADER CON USUARIO -->
-    <div id="user-header">
-        <div class="user-info">
-            <img id="header-avatar" class="user-avatar" src="" alt="Avatar">
-            <span class="user-name" id="header-username"></span>
-        </div>
-        <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
-    </div>
-
-    <!-- LOGIN CONTAINER -->
-    <div id="login-container">
-        <div class="header-branding">
-            <img src="https://files.catbox.moe/fdchtm.jpeg" alt="Logo">
-        </div>
-        <h1>Klee Movies</h1>
-
-        <!-- TABS -->
-        <div class="auth-tabs">
-            <button class="tab-button active" onclick="switchTab('login')">Iniciar Sesión</button>
-            <button class="tab-button" onclick="switchTab('register')">Registrarse</button>
-        </div>
-
-        <!-- FORMULARIO LOGIN -->
-        <div id="login-form" class="auth-form active">
-            <h2>Acceso</h2>
-            <div class="password-form">
-                <input type="text" id="login-user" placeholder="Usuario" autocomplete="username">
-                <input type="password" id="login-pass" placeholder="Contraseña" autocomplete="current-password">
-                <button onclick="login()">Entrar al Catálogo</button>
-                <p id="login-error" class="error-msg"></p>
-            </div>
-        </div>
-
-        <!-- FORMULARIO REGISTRO -->
-        <div id="register-form" class="auth-form">
-            <h2>Crear Cuenta</h2>
-            <div class="password-form">
-                <input type="text" id="register-user" placeholder="Nombre de usuario" autocomplete="username">
-                <input type="password" id="register-pass" placeholder="Contraseña (mín. 6 caracteres)" autocomplete="new-password">
-                <input type="password" id="register-pass-confirm" placeholder="Confirmar contraseña" autocomplete="new-password">
-                
-                <label class="file-input-label">Foto de Perfil (opcional):</label>
-                <input type="file" id="register-pic" accept="image/*" onchange="previewProfilePic()">
-                <img id="pic-preview" class="profile-pic-preview" src="" alt="Preview">
-                
-                <button onclick="register()">Crear Cuenta</button>
-                <p id="register-error" class="error-msg"></p>
-                <p id="register-success" class="success-msg"></p>
-            </div>
+    <div id="menu">
+        <h1>Selecciona tu Auto</h1>
+        <div class="options">
+            <button onclick="startGame('car1.png', 'car2.png')">
+                <img src="images/car1.png" alt="Auto 1"><br>Elegir Auto 1
+            </button>
+            <button onclick="startGame('car2.png', 'car1.png')">
+                <img src="images/car2.png" alt="Auto 2"><br>Elegir Auto 2
+            </button>
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main-content">
-        <header class="header-branding" style="text-align: center;">
-            <img src="https://files.catbox.moe/gc5pvi.jpeg" alt="Logo">
-            <h1>Klee Movies Library</h1>
-        </header>
+    <canvas id="gameCanvas" width="400" height="600" style="display:none;"></canvas>
 
-        <!-- CARPETA ANIME -->
-        <section class="folder-section">
-            <div class="folder-header" onclick="toggleFolder('anime')">
-                <span class="folder-icon">📁</span>
-                <span class="folder-name">Anime</span>
-                <span class="folder-arrow">▼</span>
-            </div>
-            <div class="sort-controls">
-                <button onclick="sortFolder('anime', 'name')">A-Z</button>
-                <button onclick="sortFolder('anime', 'number')"># Capítulo</button>
-                <button onclick="sortFolder('anime', 'default')">Por Defecto</button>
-            </div>
-            <div class="folder-content" id="folder-anime">
-                <div class="folder-grid" id="anime-grid"></div>
-            </div>
-        </section>
-
-        <!-- CARPETA PELÍCULAS -->
-        <section class="folder-section">
-            <div class="folder-header" onclick="toggleFolder('peliculas')">
-                <span class="folder-icon">📁</span>
-                <span class="folder-name">Películas</span>
-                <span class="folder-arrow">▼</span>
-            </div>
-            <div class="sort-controls">
-                <button onclick="sortFolder('peliculas', 'name')">A-Z</button>
-                <button onclick="sortFolder('peliculas', 'number')"># Capítulo</button>
-                <button onclick="sortFolder('peliculas', 'default')">Por Defecto</button>
-            </div>
-            <div class="folder-content" id="folder-peliculas">
-                <div class="folder-grid" id="peliculas-grid"></div>
-            </div>
-        </section>
-
-        <!-- CARPETA SERIES -->
-        <section class="folder-section">
-            <div class="folder-header" onclick="toggleFolder('series')">
-                <span class="folder-icon">📁</span>
-                <span class="folder-name">Series</span>
-                <span class="folder-arrow">▼</span>
-            </div>
-            <div class="sort-controls">
-                <button onclick="sortFolder('series', 'name')">A-Z</button>
-                <button onclick="sortFolder('series', 'number')"># Capítulo</button>
-                <button onclick="sortFolder('series', 'default')">Por Defecto</button>
-            </div>
-            <div class="folder-content" id="folder-series">
-                <div class="folder-grid" id="series-grid"></div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN FAVORITAS -->
-        <div id="favorites-section">
-            <h2>⭐ Películas Favoritas</h2>
-            <div class="video-grid" id="favorites-grid">
-                <div class="empty-favorites">
-                    <p>No tienes películas favoritas aún. ¡Haz clic en la estrella para agregar!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>
